@@ -4,7 +4,7 @@ import Skeleton from 'react-loading-skeleton';
 const Products = () => {
 
     const [data, setData] = useState([]);
-    const [filter, setfilter] = useState(data);
+    const [filter, setFilter] = useState(data);
     const [loading, setLoading] = useState(false);
     let componentMounted = true;
 
@@ -15,7 +15,7 @@ const Products = () => {
             const response = await fetch("https://fakestoreapi.com/products");
             if (componentMounted) {
                 setData(await response.clone().json());
-                setfilter(await response.json());
+                setFilter(await response.json());
                 setLoading(false);
                 console.log(filter);
             }
@@ -45,6 +45,11 @@ const Products = () => {
         )
     };
 
+    const filterProducts = (cat) => {
+        const updatedList = data.filter((x) => x.category === cat);
+        setFilter(updatedList);
+    }
+
     const ShowProducts = () => {
         return (
             <>
@@ -52,7 +57,7 @@ const Products = () => {
                     <button className='btn btn-outline-dark me-2' onClick={()=>setFilter(data)}>All</button>
                     <button className='btn btn-outline-dark me-2' onClick={()=>filterProducts("men's clothing")}>Men's Clothing</button>
                     <button className='btn btn-outline-dark me-2' onClick={()=>filterProducts("women's clothing")}>Women's Clothing</button>
-                    <button className='btn btn-outline-dark me-2' onClick={()=>filterProducts("jewellery")}>Jewellery</button>
+                    <button className='btn btn-outline-dark me-2' onClick={()=>filterProducts("jewelery")}>Jewellery</button>
                     <button className='btn btn-outline-dark me-2' onClick={()=>filterProducts("electronic")}>Electronic</button>
                 </div>
                 {filter.map((product) => {
