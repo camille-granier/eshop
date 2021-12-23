@@ -63,12 +63,12 @@ const Products = () => {
                 {filter.map((product) => {
                     return (
                         <><div className='col-md-3 mb-4'>
-                            <div class="card h-100 text-center p-4" key={product.id}>
-                                <img class="card-img-top" height="250px" src={product.image} alt={product.title} />
-                                <div class="card-body">
-                                    <h5 class="card-title mb-0">{product.title.substring(0, 12)}...</h5>
-                                    <p class="card-text lead fw-bold">€{product.price}</p>
-                                    <a href="#" class="btn btn-outline-dark">Buy Now</a>
+                            <div className="card h-100 text-center p-4" key={product.id}>
+                                <img className="card-img-top" height="250px" src={product.image} alt={product.title} />
+                                <div className="card-body">
+                                    <h5 className="card-title mb-0">{product.title.substring(0, 12)}...</h5>
+                                    <p className="card-text lead fw-bold">€{product.price}</p>
+                                    <a href="#" className="btn btn-outline-dark">Buy Now</a>
                                 </div>
                             </div>
                         </div>
